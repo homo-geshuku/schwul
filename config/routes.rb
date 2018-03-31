@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "pages#index"
   get "dashboard", to: "pages#dashboard"
 
+  resources :products
   resources :screenings do
     post "join", on: :member
     delete "join", on: :member, to: "screenings#join_cancel"

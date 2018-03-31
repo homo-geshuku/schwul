@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180129092556) do
+ActiveRecord::Schema.define(version: 20180331134703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20180129092556) do
     t.index ["screening_id", "user_id"], name: "index_join_screenings_on_screening_id_and_user_id"
     t.index ["screening_id"], name: "index_join_screenings_on_screening_id"
     t.index ["user_id"], name: "index_join_screenings_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer "type", null: false
+    t.string "title", null: false
+    t.text "description", null: false
+    t.integer "year_produced", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_products_on_title", unique: true
   end
 
   create_table "relations", force: :cascade do |t|
